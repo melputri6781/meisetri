@@ -24,13 +24,14 @@ global.pay = {
 global.info = {
 	nomorbot: '85260374711',
 	nomorown: '85260374711',
-	namebot: 'rexy rose',
-	nameown: 'rexy rose'
+	namebot: '꧁☠︎𝑫𝒆ͥ𝒗𝒊ͣ𝒍ͫ 𝑩𝒐𝒚☠︎꧂',
+	nameown: '꧁☠︎𝑫𝒆ͥ𝒗𝒊ͣ𝒍ͫ 𝑩𝒐𝒚☠︎꧂'
 }
 
 /*============== STAFF ==============*/
 global.owner = [
     ['6283163784116', 'reza', 'true'],
+    ['85260374711', 'rexy rose', 'true'],
     // [number, dia creator/owner?, dia developer?]
 ] // Put your number here
 global.allowed = ['917605902011', '32460248586', '19152999993']
@@ -66,8 +67,8 @@ global.APIKeys = {
 }
 
 /*============== WATERMARK ==============*/
-global.wm = 'rexy rose ' //Main Watermark
-global.author = 'rexy rose'
+global.wm = '꧁☠︎𝑫𝒆ͥ𝒗𝒊ͣ𝒍ͫ 𝑩𝒐𝒚☠︎꧂ ' //Main Watermark
+global.author = '꧁☠︎𝑫𝒆ͥ𝒗𝒊ͣ𝒍ͫ 𝑩𝒐𝒚☠︎꧂'
 
 /*============== TEXT ==============*/
 global.wait = '_Loading…',
@@ -344,7 +345,7 @@ global.hwaifu = [
 
 /*============== STICKER WM ==============*/
 global.stickpack = 'Made With'
-global.stickauth = 'fourstore'
+global.stickauth = '꧁☠︎𝑫𝒆ͥ𝒗𝒊ͣ𝒍ͫ 𝑩𝒐𝒚☠︎꧂'
 
 global.multiplier = 38 // The higher, The harder levelup
 global.maxwarn = '3'
