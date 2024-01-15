@@ -1,21 +1,25 @@
-import { googleIt } from '@bochilteam/scraper'
-let handler = async (m, { conn, usedPrefix, command, text }) => {
-    if (!text) return conn.reply(m.chat, `Masukan Text Yang Ingin Dicari\n\nContoh :\n${usedPrefix + command} Kapan Google Dibuat`, m)
-    let url = 'https://google.com/search?q=' + encodeURIComponent(text)
-    m.reply(wait)
-    let search = await googleIt(text)
-    let msg = search.articles.map(({ title, url, description }) => {
-        return `*${title}*\n_${url}_\n_${description}_`
-    }).join('\n\n')
-    try {
-        let ss = `https://saipulanuar.cf/api/download/ssweb2?url=https://google.com/search?q=${text}`
-        conn.sendFile(m.chat, ss, 'screenshot.png', msg, m)
-    } catch (e) {
-        m.reply(msg)
-    }
+import googleIt from 'google-it'
+
+let handler = async (m, { conn, command, text, usedPrefix }) => {
+if (!text) throw `Apa yang mau di cari??`
+let order = { text: wait, mentions: [m.sender], contextInfo: { forwardingScore: 256, isForwarded: true }};
+let anu = await googleIt({'query': text})
+if (anu.length == 0) throw 'No Result Found.'
+let txt = `Found : ${text}`
+for (var x of anu) {
+txt += `\n\n*${x.title}*\n`
+txt += `${x.link}\n`
+txt += `_${x.snippet}_\n`
+txt += `°°°°°°°°°°°°°°°°°°°°°°°°°°°°°`
 }
-handler.help = ['google'].map(v => v + ' <query>')
-handler.tags = ['internet']
-handler.command = /^google$/i
-handler.limit = true
+let { key } = await conn.sendMessage(m.chat, order, { quoted: m });
+await new Promise(resolve => setTimeout(resolve, 2000)); //dellay 
+await conn.sendMessage(m.chat, { text: txt, edit: key }, { quoted: m });
+//await m.reply(txt)
+}
+
+handler.help = ['google'].map(v => v + ' <teks>')
+handler.tags = ['search']
+handler.command = /^googlef?$/i
+
 export default handler
