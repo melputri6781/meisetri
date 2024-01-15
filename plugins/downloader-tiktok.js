@@ -1,22 +1,20 @@
 import fetch from 'node-fetch'
-import api from 'api-dylux'
-let handler = async (m, { conn, args, text, usedPrefix, command }) => { 
- if (!args[0]) throw `🚩 *Example:* ${usedPrefix+command} https://vt.tiktok.com/ZS8TQkpTK/`
 
-let f = await api.tiktok(text)
-await conn.sendMessage(m.chat, { react: { text: "⏳",key: m.key,}
-  })  
-  await m.reply('Tunggu Sebentar...')
- let cap = `*elainaMD*
- 
- 
-*Nickname :* ${f.nickname}
-*Duration :* ${f.duration}
-*Description :* ${f.description}`
-conn.sendFile(m.chat, f.play, 'ttmp4', cap, m)
+let handler = async (m, { conn, usedPrefix, args, command, text }) => {
+if (!text) throw `Linknya Mana?`
+m.reply(wait)
+try {
+let anu = await fetch(`https://aemt.me/download/tikdl?url=${text}`)
+let data = await anu.json()
+await conn.sendFile(m.chat, data.result.url.nowm, 'anu.mp4', `*Description:* ${data.result.info_video.title}`, m)
+conn.sendFile(m.chat, data.result.url.audio, 'anu.mp3', null, m)
+} catch (e) {
+m.reply(eror)
 }
-handler.help = ['tiktok', 'tt'].map(v => v + ' <url>')
+}
+handler.help = ['tiktok']
 handler.tags = ['downloader']
-handler.command = /^(tiktok2|tt2|ttdl2|tiktokdl2)$/i
+handler.command = /^(tiktok|tt|ttdl|tiktokdl)$/i
 handler.limit = true
+
 export default handler
